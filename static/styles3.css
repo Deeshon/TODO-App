@@ -1,0 +1,14 @@
+body {
+    background-image: url('/static/37-375540_flat-art-background.jpg');
+}
+
+#tasks {
+    margin-top: 20%;
+    margin-left: 10%;
+}
+
+#progress {
+    margin-top: -27%;
+    margin-left: 50%;
+
+}

@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+{% block head %}
+    <title>Tasks</title>
+    <link rel="stylesheet" href="/static/styles2.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/262825.png">
+    <script src="/static/script.js" defer></script>
+{% endblock %}
+{% block body %}
+
+<main id="main">
+    <h6 style="opacity: 0;">light</h6>
+    <section class="wrapper">
+        <header>
+            
+            <button class="btn theme-btn light" id="theme-btn" onclick="chnge_theme()"></button>
+            <h1><a href="/login">Todo</a></h1>
+            <button class="btn theme-btn light" id="theme-btn" onclick="chnge_theme()"></button>
+        </header>
+        <form action="/add" method="post">
+            <input type="text" id="todo-input" name="task" placeholder="Create a new todo..." style="background-color: white;">
+            <button class="add-todo" id="add"  style="background-color: white;">+</button>
+        </form>
+        <div class="todo-container" id="theme1">
+            <ul class="todos">
+                {% for row in data %}
+                <div class="todo-item" draggable="true" style="display: flex; border-bottom: 1px solid lightgrey;">
+                    <form action="record" method="post">
+                            <input  type="hidden" name="id_s" value="{{row[1]}}">
+                            <button id="done" class="btn delete">✓</button>
+                        </label>
+                    </form>
+                    {% if row[2]==1 %}
+                        <li class="todo"><s>{{row[0]}}</s></li>
+                    {% else %}
+                        <li class="todo">{{row[0]}}</li>
+                    {% endif %}
+                    <form action="/remove" method="post">
+                        <input  type="hidden" name="id" value="{{row[1]}}"> 
+                        <button id="del" class="btn delete">X</button>
+                    </form>    
+                  </div >
+                {% endfor %}
+            </ul>
+            <div class="actions">
+                <p class="left-items"><span id="count" >{{count[0][0]}}</span> items left</p>
+            </div>
+        </div>
+        <div class="filters" id="theme">
+            <form action="/" method="get">
+                <input type="hidden" name="type" value="all">
+                <button data-modal-target="#modal" class="button-17" id="filter-btns">All</button>
+            </form> 
+            <form action="/" method="get">
+                <input type="hidden" name="type" value="active">
+                <button data-modal-target="#modal" class="button-17" id="filter-btns">Active</button>
+            </form> 
+            <form action="/completed" method="post">
+                <button data-modal-target="#modal" class="button-17" id="filter-btns" onclick="keep_theme()">Completed</button>
+            </form>             
+        </div>
+        <p class="drag-help-info" style="color:black; font-weight:bolder;">Consistent Actions Create Consistent Results</p>
+    </section>
+</main>
+
+{% endblock %}

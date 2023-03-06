@@ -1,0 +1,57 @@
+body {
+
+    background-image: url('/static/Web-Design-Trends-Featured-Image.png');            
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#sec1 {
+            
+    width: fit-content;
+    margin: auto;
+}
+
+#sec2 {
+    background-color: red;
+    width: fit-content;
+    margin-left: 200px;
+    margin-top: -75px;
+}
+
+#form {
+    position: relative;
+    background-color: whitesmoke;
+    width: 300px;
+    height: auto;
+    margin: auto;
+    margin-top: 100px;
+}
+
+#form_btn {
+    margin-left: 100px;
+}
+
+#form_container {
+    padding: 10px;
+    box-shadow: 5px 10px black;
+    position: absolute;
+    background-color: whitesmoke;
+    width: 400px;
+    height: 400px;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#upper {
+    color: whitesmoke;
+    margin-top: 100px;
+    text-align: center;
+    height: 50px;
+}
+
+
+
+

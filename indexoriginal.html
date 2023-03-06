@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+{% block head %}
+    <title>Tasks</title>
+    <link rel="stylesheet" href="/static/styles1.css">
+{% endblock %}
+{% block body %}
+        <div id="sec1">
+            <h3 style="margin-left: -50px;">{{date}}</h3>
+            <h2 style="text-align: center; margin-left: -80px;">Your Tasks</h2>
+                {% for row in data %}
+                    <div style="width:600px; height: 50px; margin: auto; margin-left: -60px; margin-top: 10px; margin-bottom: 10px; ">
+                        <form action="/remove" method="post">
+                            <input style="margin-right: 100px;" type="submit" value="X" class="button-18">
+                            {{row[0]}}<input  type="hidden" name="id" value="{{row[1]}}">       
+                        </form>
+                        <div style="margin-top: -55px; margin-left: -450px;" class="checkbox-wrapper-26" >
+                            <input type="checkbox" id={{row[1]}}>
+                            <label for="{{row[1]}}">
+                              <div class="tick_mark"></div>
+                            </label>
+                        </div>
+                    </div>
+                {% endfor %}
+
+
+        </div>
+        <div style="margin-left:630px; margin-top:130px;">
+            <form action="/add" method="get">
+                <input type="submit" value="Add Task" class="button-50">
+            </form>
+        </div>
+        <div style="margin-top:-800px ;">
+            <div>
+                <form action="/logout" method="get">
+                    <input style="margin-left:50px ;" type="submit" value="Log Out" class="button-74" role="button">
+                </form>
+            </div>
+            <form action="/" method="get">
+                <input style="margin-left:50px;" type="text" name="date">
+                <input type="submit">
+            </form>
+        </div>
+{% endblock %}
