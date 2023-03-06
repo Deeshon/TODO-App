@@ -196,6 +196,10 @@ def completed():
         return render_template("index.html", data=output, count=count)
 
 
+if __name__ == "__main__":
+    app.run()
+
+
 
 
 
